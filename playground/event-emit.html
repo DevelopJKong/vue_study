@@ -10,6 +10,7 @@
     <div id="app">
         <!-- <app-header v-on:하위 컴포넌트에서 발생한 이벤트 이름="상위 컴포넌트의 메서드"></app-header> -->
         <app-header v-on:pass = "logText"></app-header>
+        <app-content v-on:increase = "increaseNumber"></app-content>
     </div>
 </body>
 
@@ -29,7 +30,7 @@
         template: '<button v-on:click="addNumber">add</button>',
         methdos: {
             addNumber:function(){
-                this.$emit()
+                this.$emit('increase')
             }
         }
     }
@@ -46,7 +47,10 @@
                 console.log('hi');
                 //this.num 으로 접근이 가능하다
             },
-            // ...
+            // ..
+            increaseNumber:function(){
+                this.num = this.num+1;
+            }
         },
         data:{
             num:10
