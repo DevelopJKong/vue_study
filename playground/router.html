@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <!--그럼 그냥 a 태그를 사용하면 되는건데 굳이 왜? router-view를 사용하는거지?-->
+            <router-link to="/login">Login</router-link>
+            <router-link to="/main">Main</router-link>
+        </div>
+        <router-view></router-view>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    var LoginComponent = {
+        template: '<div>login</div>'
+    }
+
+    var MainComponent = {
+        template: '<div>main</div>'
+    }
+
+    var router = new VueRouter({
+        // 페이지의 라우팅 정보
+        
+        routes: [
+            //로그인 페이지 정보
+            {
+                // 페이지의 url 이름
+                path:'/login',
+                name:'login', // name을 넣어줬을시에는 조금 더 의미있는 정보를 전달할수있다
+                // 해당 url에서 표시될 컴포넌트
+                component: LoginComponent
+            },
+            //메인 페이지 정보
+            {
+                // 페이지의 url 이름 (main)
+                path: '/main',
+                component: MainComponent
+
+                
+
+            }
+        ]
+
+    });
+
+
+    new Vue({
+      el: '#app',
+      router: router  
+    });
+
+
+</script>
+
+</body>
+</html>
