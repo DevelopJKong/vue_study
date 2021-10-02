@@ -8,8 +8,19 @@
 </head>
 <body>
     <div id="app">
-       <p> {{ num }}</p>
+       <p v-bind:id="uuid" v-bind:class="name"> {{ num }}</p>
        <p>{{ doubleNum }}</p>
+       <div v-if="loading"> <!-- 아예 지워 버린다-->
+           Loading...
+       </div>
+       <div v-else>
+           test user login has been logged in
+       </div>
+       <div v-show="loading"> <!-- dom 에서 남겨둔다 -->
+            Loading...
+       </div>
+       <input v-model="message" type="text" placeholder="please type"/>
+       <p>Message is : {{ message }}</p>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -18,6 +29,10 @@
             el:'#app',
             data: {
                 num:10,
+                uuid: "abc1234",
+                name: "text-blue",
+                loading:true,
+                message: ""
             },
             computed: {
                 doubleNum: function() {
